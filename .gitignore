@@ -5,6 +5,7 @@
 /.project
 /.classpath
 /.settings/
+.gitignore
 
 # OS / tooling
 .DS_Store
