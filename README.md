@@ -1,59 +1,101 @@
-# 🌿 Avaliação de Regiões com Plantas Tóxicas - Com Java
+# Toxic Plant Region Assessment System — Java Edition
 
-Projeto acadêmico da disciplina **Linguagem e Programação II**  
-Desenvolvido por **Izabella Miranda Silva**.
+Academic project — Programming Languages II  
+Developed by Izabella Miranda Silva
 
-## 📌 Descrição
+---
 
-Sistema desktop para gerenciamento e avaliação de regiões que possuem plantas tóxicas e medicinais, com foco em apoio à análise de risco e monitoramento ambiental.  
-Permite cadastrar botânicos, plantas, regiões e avaliações de toxicidade, além de realizar pesquisas com filtros avançados sobre esses dados.
+## Overview
 
-## 🧪 Funcionalidades principais
+A desktop management system for evaluating regions based on the presence of toxic
+and medicinal plants, designed to support environmental risk analysis and monitoring.
 
-- Cadastro de plantas (tóxicas e medicinais) com atributos específicos.  
-- Cadastro de botânicos e regiões.  
-- Registro de avaliações de toxicidade, relacionando botânico e região, com contagem de plantas de alta e baixa toxicidade.  
-- Pesquisa de avaliações de toxicidade com filtros por especialidade do botânico, acessibilidade da região, origem da planta, parte utilizada, composto tóxico e quantidade mínima de plantas de alta toxicidade.  
-- Exibição detalhada de avaliações, listando botânico, região e plantas associadas.
+Built with Java Swing and backed by a relational database via JDBC, the system
+provides full CRUD operations and advanced filtering for toxicity assessments.
 
-## 🚀 Como executar
+**Core capabilities:**
+- Register plants (toxic and medicinal) with type-specific attributes
+- Register botanists and geographic regions
+- Record toxicity assessments linking a botanist to a region, with counts of
+  high and low toxicity plants
+- Search assessments using multiple filters: botanist specialty, region
+  accessibility, plant origin, used part, toxic compound, and minimum
+  high-toxicity plant count
+- View detailed assessment reports including botanist, region, and associated plants
 
-1. **Requisitos**  
-   - Java 8+ instalado.  
-   - Banco de dados configurado de acordo com o script `banco.sql` (tabelas de botânicos, plantas, regiões e avaliações de toxicidade).  
-   - NetBeans (ou outra IDE Java) para facilitar a execução da aplicação Swing.
+---
 
-2. **Configuração do projeto**  
-   - Importe o projeto na IDE (por exemplo, NetBeans).  
-   - Configure a conexão com o banco de dados na classe de persistência `BD` (URL, usuário, senha etc.).  
+## Tech Stack
 
-3. **Execução**  
-   - Execute a classe `App`, que inicializa a interface gráfica principal (`JanelaSistema`).  
-   - Use o menu superior para acessar:
-     - **Planta → Cadastrar**: cadastro de plantas.  
-     - **Botânico → Cadastrar**: cadastro de botânicos.  
-     - **Região → Cadastrar**: cadastro de regiões.  
-     - **Avaliação → Cadastrar**: cadastro de avaliações de toxicidade.  
-     - **Avaliação → Pesquisar**: pesquisa de avaliações de toxicidade.  
+![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white)
+![Swing](https://img.shields.io/badge/Java_Swing-007396?style=flat&logo=java&logoColor=white)
+![JDBC](https://img.shields.io/badge/JDBC-4479A1?style=flat&logo=mysql&logoColor=white)
 
-4. **Finalização**  
-   - Ao fechar a janela principal, a conexão com o banco é encerrada e o sistema é finalizado.
+- Java 8+
+- Java Swing (GUI)
+- JDBC for database connectivity
+- Relational database (schema defined in `banco.sql`)
+- NetBeans IDE (visual form editor)
 
-## 💻 Interface gráfica
+---
 
-- Interface gráfica construída com **Java Swing**, utilizando o editor visual do **NetBeans** para criação das janelas, menus, painéis e formulários.  
-- A janela principal (`JanelaSistema`) é um `JFrame` com barra de menu para acessar as operações de cadastro e pesquisa.
+**Domain entities:**
 
-## 🛠️ Tecnologias utilizadas
+| Entity | Key attributes |
+|---|---|
+| `Plant` | name, toxicity, origin |
+| `MedicinalPlant` (extends Plant) | used_part, therapeutic_property |
+| `ToxicPlant` (extends Plant) | toxic_compound, side_effect |
+| `Botanist` | name, specialty, qualification |
+| `Region` | ecosystem, state, accessibility, risk_season |
+| `ToxicityAssessment` | botanist, region, high/low toxicity plant counts |
 
-- **Java 8+**  
-- **Java Swing**  
-- **NetBeans IDE**  
-- **JDBC**  
-- **Banco de dados relacional** (estrutura definida em `banco.sql`)
+---
 
-## ✨ Autoria
+## Getting Started
 
-Desenvolvido por **Izabella Miranda Silva**  
-📅 Entrega 4 — Linguagem e Programação II  
-📍 Dourados – 25/11/2025
+**Prerequisites:**
+- Java 8+
+- A relational database configured using the provided `banco.sql` script
+
+**Setup:**
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/bellchilk/avaliacao-regioes-plantas-toxicas-java.git
+
+# 2. Import the project into NetBeans (or any Java IDE)
+
+# 3. Run the banco.sql script to create the required tables
+
+# 4. Configure your database connection in BD.java
+#    Set the correct URL, username, and password
+
+# 5. Run App.java to launch the application
+```
+
+**Navigation:** Use the top menu bar to access all features:
+
+| Menu | Action |
+|---|---|
+| Planta → Cadastrar | Register a new plant |
+| Botânico → Cadastrar | Register a new botanist |
+| Região → Cadastrar | Register a new region |
+| Avaliação → Cadastrar | Record a toxicity assessment |
+| Avaliação → Pesquisar | Search and filter assessments |
+
+Closing the main window terminates the database connection and exits the application.
+
+---
+
+## Key Concepts Practiced
+
+- GUI development with Java Swing and NetBeans visual editor
+- Relational database design and SQL schema definition
+- JDBC for database connectivity and query execution
+- Object-oriented modeling with inheritance (`Plant` → `MedicinalPlant`, `ToxicPlant`)
+- Multi-criteria search and filtering logic
+
+---
+
+*Submitted for Programming Languages II — November 2025*
